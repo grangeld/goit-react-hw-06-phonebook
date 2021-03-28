@@ -5,7 +5,10 @@ import Filter from './Filter';
 import { useSelector, useDispatch } from 'react-redux';
 import s from './app.module.css';
 import { getFilter, getContacts } from '../redux/contacts/contacts-selector';
-import { addContact as addContactDispatch } from '../redux/contacts/contacts-actions';
+import {
+  addContact as addContactDispatch,
+  deleteContact,
+} from '../redux/contacts/contacts-actions';
 // [
 //   { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
 //   { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
@@ -46,8 +49,8 @@ function App() {
   });
 
   const onDelete = id => {
-    const newContacts = contacts.filter(contact => contact.id !== id);
-    setContacts(newContacts);
+    //const newContacts = contacts.filter(contact => contact.id !== id);
+    dispatch(deleteContact(id));
   };
 
   return (
